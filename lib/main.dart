@@ -1,3 +1,5 @@
+import 'package:e_wallet_mobile_apps/ui/pages/onbourding_page.dart';
+import 'package:e_wallet_mobile_apps/ui/pages/sign_in_page.dart';
 import 'package:e_wallet_mobile_apps/ui/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -9,9 +11,13 @@ class MyApp extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashPage(),
+      routes: {
+        '/': (context) => const SplashPage(),
+        '/on-boarding': (context) => const OnboardingPage(),
+        '/sign-in': (context) => const SignInPage(),
+      },
     );
   }
 }

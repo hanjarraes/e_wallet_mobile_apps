@@ -12,21 +12,16 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    Timer(const Duration(seconds: 2), (){
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const OnboardingPage(),
-        ),
-      );
+    Timer(const Duration(seconds: 2), () {
+      Navigator.pushNamed(context, '/on-boarding');
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,12 +31,10 @@ class _SplashPageState extends State<SplashPage> {
           width: 155,
           height: 50,
           decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                'assets/img_logo_dark.png',
-              )
-            )
-          ),
+              image: DecorationImage(
+                  image: AssetImage(
+            'assets/img_logo_dark.png',
+          ))),
         ),
       ),
     );

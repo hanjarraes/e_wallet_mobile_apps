@@ -20,8 +20,8 @@ TextStyle whiteTextStyle = GoogleFonts.poppins(
 TextStyle grayTextStyle = GoogleFonts.poppins(
     color:grayColor,
 );
-TextStyle blueTextStyle = GoogleFonts.poppins(
-    color:grayColor,
+TextStyle blueTextStyle1 = GoogleFonts.poppins(
+    color:blueColor,
 );
 TextStyle greenTextStyle = GoogleFonts.poppins(
     color:greenColor,
