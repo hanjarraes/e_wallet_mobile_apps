@@ -1,11 +1,11 @@
-import 'package:e_wallet_mobile_apps/shared/theme.dart';
+import 'package:e_wallet_mobile_apps/ui/widgets/buttons.dart';
 import 'package:e_wallet_mobile_apps/ui/widgets/forms.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/buttons.dart';
+import '../../shared/theme.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({Key? key}) : super(key: key);
+class SignUpSetKtpPage extends StatelessWidget {
+  const SignUpSetKtpPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class SignInPage extends StatelessWidget {
             height: 50,
             margin: const EdgeInsets.only(
               top: 100,
-              bottom: 100,
+              bottom: 80,
             ),
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -30,7 +30,7 @@ class SignInPage extends StatelessWidget {
             ),
           ),
           Text(
-            'Sign In &\nGrow Your Finance',
+            'Verify Your\nAccount',
             style: blackTextStyle.copyWith(
               fontSize: 20,
               fontWeight: semiBold,
@@ -46,55 +46,63 @@ class SignInPage extends StatelessWidget {
               color: whiteColor,
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                //NOTE: EMAIL INPUT
-                const CustomFormField(
-                  title: 'Email Address',
+                Container(
+                  width: 120,
+                  height: 120,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: lightBackgroundColor,
+                  ),
+                  child: Center(
+                    child: Image.asset(
+                      'assets/ic_upload.png',
+                      width: 32,
+                    ),
+                  ),
                 ),
+                // Container(
+                //   width: 120,
+                //   height: 120,
+                //   decoration: const BoxDecoration(
+                //       shape: BoxShape.circle,
+                //       image: DecorationImage(
+                //           fit: BoxFit.cover,
+                //           image: AssetImage(
+                //         'assets/img_profile.png',
+                //       ))),
+                // ),
                 const SizedBox(
                   height: 16,
                 ),
-                //NOTE: PASSWORD INPUT
-                const CustomFormField(
-                  title: 'Password',
-                  obscureText: true,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    'Forgot Password',
-                    style: blueTextStyle1,
+                Text(
+                  'Passport/Id Card',
+                  style: blackTextStyle.copyWith(
+                    fontSize: 18,
+                    fontWeight: medium,
                   ),
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 50,
                 ),
                 CustomFilledButton(
-                  title: 'Sign In',
+                  title: 'Continue',
                   onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      '/home',
-                          (route) => false,
-                    );
+                    Navigator.pushNamed(context, '/sign-up-success');
                   },
                 ),
               ],
             ),
           ),
           const SizedBox(
-            height: 50,
+            height: 60,
           ),
           CustomTextButton(
-            title: 'Create New Account',
+            title: 'Skip for Now',
             onPressed: () {
-              Navigator.pushNamed(context, '/sign-up');
+              Navigator.pushNamed(context, '/sign-up-success');
             },
-          ),
+          )
         ],
       ),
     );
