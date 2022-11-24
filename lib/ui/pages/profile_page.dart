@@ -10,9 +10,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'My Profile'
-        ),
+        title: const Text('My Profile'),
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(
@@ -76,12 +74,20 @@ class ProfilePage extends StatelessWidget {
                 ProfileMenuItem(
                   iconUrl: 'assets/ic_edit_profile.png',
                   title: 'Edit Profile',
-                  onTap: () {},
+                  onTap: () async{
+                    if (await Navigator.pushNamed(context, '/pin') == true) {
+                      Navigator.pushNamed(context, '/profile-edit');
+                    }
+                  },
                 ),
                 ProfileMenuItem(
                   iconUrl: 'assets/ic_my_pin.png',
                   title: 'My Pin',
-                  onTap: () {},
+                  onTap: () async{
+                    if (await Navigator.pushNamed(context, '/pin') == true) {
+                      Navigator.pushNamed(context, '/profile-edit-pin');
+                    }
+                  },
                 ),
                 ProfileMenuItem(
                   iconUrl: 'assets/ic_wallet_settings.png',
