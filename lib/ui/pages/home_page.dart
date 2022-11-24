@@ -1,4 +1,8 @@
 import 'package:e_wallet_mobile_apps/shared/theme.dart';
+import 'package:e_wallet_mobile_apps/ui/widgets/home_latest_transaction_item.dart';
+import 'package:e_wallet_mobile_apps/ui/widgets/home_tips_item.dart';
+import 'package:e_wallet_mobile_apps/ui/widgets/home_user_item.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/home_service_item.dart';
@@ -78,7 +82,10 @@ class HomePage extends StatelessWidget {
           buildProfile(),
           buildWalletCard(),
           buildLevel(),
-          buildServices()
+          buildServices(),
+          buildLatestTransactions(),
+          buildSendAgain(),
+          buildFriendlyTips(),
         ],
       ),
     );
@@ -300,4 +307,168 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  Widget buildLatestTransactions() {
+    return Container(
+      margin: const EdgeInsets.only(
+        top: 30,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Latest Transactions',
+            style: blackTextStyle.copyWith(
+              fontSize: 16,
+              fontWeight: semiBold,
+            ),
+          ),
+          const SizedBox(
+            height: 14,
+          ),
+          Container(
+            padding: const EdgeInsets.all(22),
+            margin: const EdgeInsets.only(
+              top: 14,
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: whiteColor,
+            ),
+            child: Column(
+              children: const [
+                HomeLatestTransactionItem(
+                  iconUrl: 'assets/ic_transaction_cat1.png',
+                  title: 'Top up',
+                  time: 'Yesterday',
+                  value: '+ 450.000',
+                ),
+                HomeLatestTransactionItem(
+                  iconUrl: 'assets/ic_transaction_cat2.png',
+                  title: 'Cashback',
+                  time: 'Sep 11',
+                  value: '+ 22.000',
+                ),
+                HomeLatestTransactionItem(
+                  iconUrl: 'assets/ic_transaction_cat3.png',
+                  title: 'Withdraw',
+                  time: 'Sep 2',
+                  value: '- 5.000',
+                ),
+                HomeLatestTransactionItem(
+                  iconUrl: 'assets/ic_transaction_cat4.png',
+                  title: 'Transfer',
+                  time: 'Aug 27',
+                  value: '- 124.500',
+                ),
+                HomeLatestTransactionItem(
+                  iconUrl: 'assets/ic_transaction_cat5.png',
+                  title: 'Electric',
+                  time: 'Feb 18',
+                  value: '- 12.300.000',
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget buildSendAgain() {
+    return Container(
+      margin: const EdgeInsets.only(
+        top: 30,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Send Again',
+            style: blackTextStyle.copyWith(
+              fontSize: 16,
+              fontWeight: semiBold,
+            ),
+          ),
+          const SizedBox(
+            height: 14,
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: const [
+                HomeUserItem(
+                  imageUrl: 'assets/img_friends1.png',
+                  username: 'yuanita',
+                ),
+                HomeUserItem(
+                  imageUrl: 'assets/img_friends2.png',
+                  username: 'jani',
+                ),
+                HomeUserItem(
+                  imageUrl: 'assets/img_friends3.png',
+                  username: 'uri',
+                ),
+                HomeUserItem(
+                  imageUrl: 'assets/img_friends4.png',
+                  username: 'masa',
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget buildFriendlyTips() {
+    return Container(
+      margin: const EdgeInsets.only(
+        top: 30,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Friends Tips',
+            style: blackTextStyle.copyWith(
+              fontSize: 16,
+              fontWeight: semiBold,
+            ),
+          ),
+          const SizedBox(
+            height: 14,
+          ),
+          Wrap(
+            spacing: 17,
+            runSpacing: 18,
+            children: const [
+               HomeTipsItem(
+                imageUrl: 'assets/ing_tips1.png',
+                tittle: 'Best tips for using a credit card',
+                url: 'https://www.google.com',
+              ),
+              HomeTipsItem(
+                imageUrl: 'assets/ing_tips2.png',
+                tittle: 'Spot the good pie of finance model',
+                url: 'https://www.google.com',
+              ),
+              HomeTipsItem(
+                imageUrl: 'assets/ing_tips3.png',
+                tittle: 'Great hack to get better advices',
+                url: 'https://www.google.com',
+              ),
+              HomeTipsItem(
+                imageUrl: 'assets/ing_tips4.png',
+                tittle: 'Save more penny buy this instead',
+                url: 'https://www.google.com',
+              ),
+            ]
+          ),
+        ],
+      ),
+    );
+  }
+
+
 }
