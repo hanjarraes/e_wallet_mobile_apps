@@ -1,3 +1,4 @@
+import 'package:e_wallet_mobile_apps/shared/theme.dart';
 import 'package:e_wallet_mobile_apps/ui/pages/home_page.dart';
 import 'package:e_wallet_mobile_apps/ui/pages/onbourding_page.dart';
 import 'package:e_wallet_mobile_apps/ui/pages/profile_page.dart';
@@ -18,6 +19,21 @@ class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return  MaterialApp(
+      theme: ThemeData(
+        scaffoldBackgroundColor: lightBackgroundColor,
+        appBarTheme: AppBarTheme(
+          backgroundColor: lightBackgroundColor,
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: blackColor,
+          ),
+          centerTitle: true,
+          titleTextStyle: blackTextStyle.copyWith(
+            fontWeight: semiBold,
+            fontSize: 20,
+          ),
+        )
+      ),
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (context) => const SplashPage(),
