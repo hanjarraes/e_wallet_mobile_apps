@@ -1,3 +1,4 @@
+import 'package:e_wallet_mobile_apps/shared/shared_methods.dart';
 import 'package:e_wallet_mobile_apps/shared/theme.dart';
 import 'package:e_wallet_mobile_apps/ui/widgets/home_latest_transaction_item.dart';
 import 'package:e_wallet_mobile_apps/ui/widgets/home_tips_item.dart';
@@ -201,7 +202,7 @@ class HomePage extends StatelessWidget {
             style: whiteTextStyle,
           ),
           Text(
-            'Rp 12.500',
+            formatCurrency(12500),
             style: whiteTextStyle.copyWith(
               fontSize: 24,
               fontWeight: semiBold,
@@ -240,7 +241,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Text(
-                'of Rp 20.000',
+                'of ${formatCurrency(20000)}',
                 style: blackTextStyle.copyWith(
                   fontWeight: semiBold,
                 ),
@@ -307,7 +308,12 @@ class HomePage extends StatelessWidget {
               HoveServicesItem(
                 iconUrl: 'assets/ic_more.png',
                 title: 'More',
-                onTap: () {},
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => const MoreDialog(),
+                  );
+                },
               ),
             ],
           )
@@ -344,36 +350,36 @@ class HomePage extends StatelessWidget {
               color: whiteColor,
             ),
             child: Column(
-              children: const [
+              children: [
                 HomeLatestTransactionItem(
                   iconUrl: 'assets/ic_transaction_cat1.png',
                   title: 'Top up',
                   time: 'Yesterday',
-                  value: '+ 450.000',
+                  value: '+ ${formatCurrency(1450000, symbol: '')}',
                 ),
                 HomeLatestTransactionItem(
                   iconUrl: 'assets/ic_transaction_cat2.png',
                   title: 'Cashback',
                   time: 'Sep 11',
-                  value: '+ 22.000',
+                  value: '+ ${formatCurrency(22000, symbol: '')}',
                 ),
                 HomeLatestTransactionItem(
                   iconUrl: 'assets/ic_transaction_cat3.png',
                   title: 'Withdraw',
                   time: 'Sep 2',
-                  value: '- 5.000',
+                  value: '- ${formatCurrency(5000, symbol: '')}',
                 ),
                 HomeLatestTransactionItem(
                   iconUrl: 'assets/ic_transaction_cat4.png',
                   title: 'Transfer',
                   time: 'Aug 27',
-                  value: '- 124.500',
+                  value: '- ${formatCurrency(124500, symbol: '')}',
                 ),
                 HomeLatestTransactionItem(
                   iconUrl: 'assets/ic_transaction_cat5.png',
                   title: 'Electric',
                   time: 'Feb 18',
-                  value: '- 12.300.000',
+                  value: '- ${formatCurrency(12500000, symbol: '')}',
                 ),
               ],
             ),
@@ -447,35 +453,108 @@ class HomePage extends StatelessWidget {
           const SizedBox(
             height: 14,
           ),
-          Wrap(
-            spacing: 2,
-            runSpacing: 18,
-            children: const [
-               HomeTipsItem(
-                imageUrl: 'assets/ing_tips1.png',
-                tittle: 'Best tips for using a credit card',
-                url: 'https://www.google.com',
-              ),
-              HomeTipsItem(
-                imageUrl: 'assets/ing_tips2.png',
-                tittle: 'Spot the good pie of finance model',
-                url: 'https://www.google.com',
-              ),
-              HomeTipsItem(
-                imageUrl: 'assets/ing_tips3.png',
-                tittle: 'Great hack to get better advices',
-                url: 'https://www.google.com',
-              ),
-              HomeTipsItem(
-                imageUrl: 'assets/ing_tips4.png',
-                tittle: 'Save more penny buy this instead',
-                url: 'https://www.google.com',
-              ),
-            ]
-          ),
+          Wrap(spacing: 2, runSpacing: 18, children: const [
+            HomeTipsItem(
+              imageUrl: 'assets/ing_tips1.png',
+              tittle: 'Best tips for using a credit card',
+              url: 'https://www.google.com',
+            ),
+            HomeTipsItem(
+              imageUrl: 'assets/ing_tips2.png',
+              tittle: 'Spot the good pie of finance model',
+              url: 'https://www.google.com',
+            ),
+            HomeTipsItem(
+              imageUrl: 'assets/ing_tips3.png',
+              tittle: 'Great hack to get better advices',
+              url: 'https://www.google.com',
+            ),
+            HomeTipsItem(
+              imageUrl: 'assets/ing_tips4.png',
+              tittle: 'Save more penny buy this instead',
+              url: 'https://www.google.com',
+            ),
+          ]),
         ],
       ),
     );
   }
+}
 
+class MoreDialog extends StatelessWidget {
+  const MoreDialog({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      backgroundColor: Colors.transparent,
+      insetPadding: EdgeInsets.zero,
+      alignment: Alignment.bottomCenter,
+      content: Container(
+        height: 326,
+        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.all(30),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(40),
+          color: lightBackgroundColor,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Do More With Us',
+              style: blackTextStyle.copyWith(
+                fontWeight: semiBold,
+                fontSize: 16,
+              ),
+            ),
+            const SizedBox(
+              height: 13,
+            ),
+            Wrap(
+              spacing: 21,
+              runSpacing: 25,
+              children: [
+                HoveServicesItem(
+                  iconUrl: 'assets/ic_product_data.png',
+                  title: 'Data',
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/data-provider',
+                    );
+                  },
+                ),
+                HoveServicesItem(
+                  iconUrl: 'assets/ic_product_Water.png',
+                  title: 'Water',
+                  onTap: () {},
+                ),
+                HoveServicesItem(
+                  iconUrl: 'assets/ic_product_stream.png',
+                  title: 'Stream',
+                  onTap: () {},
+                ),
+                HoveServicesItem(
+                  iconUrl: 'assets/ic_product_movie.png',
+                  title: 'Movie',
+                  onTap: () {},
+                ),
+                HoveServicesItem(
+                  iconUrl: 'assets/ic_product_food.png',
+                  title: 'Food',
+                  onTap: () {},
+                ),
+                HoveServicesItem(
+                  iconUrl: 'assets/ic_product_travel.png',
+                  title: 'travel',
+                  onTap: () {},
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
 }

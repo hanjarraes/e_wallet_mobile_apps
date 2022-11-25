@@ -44,6 +44,7 @@ dev_dependencies:
   google_fonts: ^2.3.0
   carousel_slider: ^4.1.1
   url_launcher: ^6.1.7
+  another_flushbar: ^1.12.29
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
