@@ -295,7 +295,9 @@ class HomePage extends StatelessWidget {
               HoveServicesItem(
                 iconUrl: 'assets/ic_send.png',
                 title: 'Send',
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, '/transfer_page');
+                },
               ),
               HoveServicesItem(
                 iconUrl: 'assets/ic_withdraw.png',
