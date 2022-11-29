@@ -45,6 +45,11 @@ dev_dependencies:
   carousel_slider: ^4.1.1
   url_launcher: ^6.1.7
   another_flushbar: ^1.12.29
+  http: ^0.13.5
+  flutter_bloc: ^8.1.1
+  equatable: ^2.0.5
+  image_picker: ^0.8.6
+  flutter_secure_storage: ^5.0.2
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
