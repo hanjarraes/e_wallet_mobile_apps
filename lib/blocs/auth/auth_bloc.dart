@@ -11,6 +11,7 @@ import 'package:e_wallet_mobile_apps/services/wallet_service.dart';
 import 'package:equatable/equatable.dart';
 
 part 'auth_event.dart';
+
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
@@ -98,15 +99,25 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
 
       if (event is AuthLogout) {
-          try{
-            emit(AuthLoading());
+        try {
+          emit(AuthLoading());
 
-            await AuthService().logout();
+          await AuthService().logout();
 
-            emit(AuthInitial());
-          } catch (e){
-            emit(AuthFailed(e.toString()));
-          }
+          emit(AuthInitial());
+        } catch (e) {
+          emit(AuthFailed(e.toString()));
+        }
+      }
+      if (event is AuthUpdateBalance) {
+        if (state is AuthSuccess) {
+          final currentUser = (state as AuthSuccess).user;
+          final updatedUser = currentUser.copyWith(
+            balance: currentUser.balance! + event.amount,
+          );
+
+          emit(AuthSuccess(updatedUser));
+        }
       }
     });
   }
