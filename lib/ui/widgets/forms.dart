@@ -15,7 +15,7 @@ class CustomFormField extends StatelessWidget {
     this.obscureText = false,
     this.controller,
     this.isShowTitle = true,
-    this.keyboardType
+    this.keyboardType,
   }) : super(key: key);
 
   @override
