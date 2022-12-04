@@ -1,19 +1,12 @@
+import 'package:e_wallet_mobile_apps/models/user_model.dart';
 import 'package:e_wallet_mobile_apps/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 class TransferRecentUserItem extends StatelessWidget {
-  final String imageUrl;
-  final String name;
-  final String username;
-  final bool isVerified;
+  final UserModel user;
 
-  const TransferRecentUserItem({
-    Key? key,
-    required this.imageUrl,
-    required this.name,
-    required this.username,
-    this.isVerified = false,
-  }) : super(key: key);
+  const TransferRecentUserItem({Key? key, required this.user})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +30,11 @@ class TransferRecentUserItem extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                image: AssetImage(
-                  imageUrl,
-                ),
+                image: user.profilePicture == null
+                    ? const AssetImage(
+                        'assets/img_profile.png',
+                      )
+                    : NetworkImage(user.profilePicture!) as ImageProvider,
               ),
             ),
           ),
@@ -47,7 +42,7 @@ class TransferRecentUserItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                name,
+                user.name.toString(),
                 style: blackTextStyle.copyWith(
                   fontWeight: medium,
                   fontSize: 16,
@@ -57,7 +52,7 @@ class TransferRecentUserItem extends StatelessWidget {
                 height: 2,
               ),
               Text(
-                '@$username',
+                '@${user.username.toString()}',
                 style: grayTextStyle.copyWith(
                   fontWeight: medium,
                   fontSize: 12,
@@ -66,25 +61,26 @@ class TransferRecentUserItem extends StatelessWidget {
             ],
           ),
           const Spacer(),
-         if(isVerified) Row(
-            children: [
-              Icon(
-                Icons.check_circle,
-                size: 14,
-                color: greenColor,
-              ),
-              const SizedBox(
-                width: 4,
-              ),
-              Text(
-                'Verified',
-                style: greenTextStyle.copyWith(
-                  fontSize: 11,
-                  fontWeight: medium,
+          if (user.verified == 1)
+            Row(
+              children: [
+                Icon(
+                  Icons.check_circle,
+                  size: 14,
+                  color: greenColor,
                 ),
-              )
-            ],
-          ),
+                const SizedBox(
+                  width: 4,
+                ),
+                Text(
+                  'Verified',
+                  style: greenTextStyle.copyWith(
+                    fontSize: 11,
+                    fontWeight: medium,
+                  ),
+                )
+              ],
+            ),
         ],
       ),
     );
