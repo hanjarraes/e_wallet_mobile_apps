@@ -108,15 +108,9 @@ class _SignUpSetProfilePageState extends State<SignUpSetProfilePage> {
                 const SizedBox(
                   height: 16,
                 ),
-                Text(
-                  'Shayna Hanna',
-                  style: blackTextStyle.copyWith(
-                    fontSize: 18,
-                    fontWeight: medium,
-                  ),
-                ),
+
                 const SizedBox(
-                  height: 30,
+                  height: 40,
                 ),
                 CustomFormField(
                   title: 'Set PIN (6 digit number)',
